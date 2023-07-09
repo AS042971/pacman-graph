@@ -1,0 +1,31 @@
+{
+  "title": "2023年5月国产二次元手游流水",
+  "unit": "万元人民币",
+  "pacman-main":[
+    {"name": "原神", "value": 206073 },
+    {"name": "崩坏星穹铁道", "value": 458148 }
+  ],
+  "pacman-eye":[
+    {"name": "崩坏3", "value":6836},
+    {"name": "未定事件簿", "value": 2131}
+  ],
+  "pacman-ghosts":[
+    {"name": "阴阳师", "value": 14862},
+    {"name": "明日方舟", "value": 44561},
+    {"name": "碧蓝航线", "value": 15719},
+    {"name": "火影忍者", "value": 33084},
+    {"name": "偶像梦幻祭2", "value": 11594},
+    {"name": "战双帕弥什", "value": 11594},
+    {"name": "幻塔", "value": 3559},
+    {"name": "光与夜之恋", "value": 3054},
+    {"name": "奇迹暖暖", "value": 2147},
+    {"name": "闪耀暖暖", "value": 2331},
+    {"name": "无期迷途", "value": 2075},
+    {"name": "雀魂", "value": 5021},
+    {"name": "重返未来", "value": 2907},
+    {"name": "FGO", "value": 32706},
+    {"name": "碧蓝档案", "value": 11569},
+    {"name": "赛马娘", "value": 27684},
+    {"name": "其他", "value": 28163}
+  ]
+}
