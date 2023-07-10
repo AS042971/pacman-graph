@@ -47,9 +47,8 @@ def drawPacmanMain(draw: ImageDraw, pacman_main: list, pacman_eye: list):
         draw.text((font_cx - w/2, font_cy - h/2), item['name'], (0,0,0), align='center', font=font)
         ratio_str = f'{int(ratio*1000)/10}%'
         _, _, w, h = draw.textbbox((0, 0),ratio_str, font=font)
-        draw.text((font_cx - w/2, font_cy - h/2 + 60), ratio_str, (0,0,0), align='center', font=font)
+        draw.text((font_cx - w/2, font_cy - h/2 + 40), ratio_str, (0,0,0), align='center', font=font)
         current_angle -= delta_angle
-
 
     eye_radius = math.sqrt(eye_ratio) * 400
     eye_angle = 0
@@ -63,34 +62,36 @@ def drawPacmanMain(draw: ImageDraw, pacman_main: list, pacman_eye: list):
         draw.pieslice([550 - eye_radius, 300 - eye_radius, 550 + eye_radius, 300 + eye_radius], start=eye_angle, end=eye_angle + relative_ratio * 360, fill=color)
         eye_angle += relative_ratio * 360
 
-def appendGhost(img: Image, draw: ImageDraw, ghost: Image, center_x: float, center_y: float, radius: float, font: ImageFont, name: str, ratio: float, idx: int):
+    _, _, w, h = draw.textbbox((0, 0), '其他米哈游游戏', font=font)
+    # if idx == 0:
+    draw.text((550 - w/2, 200 - h/2), '其他米哈游游戏', (0,0,0), align='center', font=font)
+    ratio_str = f'{int(eye_ratio*1000)/10}%'
+    _, _, w, h = draw.textbbox((0, 0),ratio_str, font=font)
+    draw.text((550 - w/2, 200 - h/2 + 40), ratio_str, (0,0,0), align='center', font=font)
+
+def appendGhost(img: Image, draw: ImageDraw, ghost: Image, center_x: float, center_y: float, radius: float, name: str, ratio: float, idx: int):
     ghost_resize = ghost.resize((int(radius*2), int(radius*2)))
     img.paste(ghost_resize, (int(center_x - radius), int(center_y - radius)), ghost_resize)
     ratio_str = f'{int(ratio*1000)/10}%'
-    if ratio > 0.01:
-        _, _, w, h = draw.textbbox((0, 0), name, font=font)
-        if idx % 2 == 0:
-            draw.text((center_x - w/2, center_y - h/2 + 120), name, (255,255,255), align='center', font=font)
-        else:
-            draw.text((center_x - w/2, center_y - h/2 + 180), name, (255,255,255), align='center', font=font)
-        _, _, w, h = draw.textbbox((0, 0), ratio_str, font=font)
-        draw.text((center_x - w/2, center_y - h/2 - 120), ratio_str, (255,255,255), align='center', font=font)
+    font = ImageFont.truetype('C:\\Windows\\Fonts\\Deng.ttf', int(math.sqrt(ratio) * 250))
+    _, _, w, h = draw.textbbox((0, 0), name, font=font)
+    draw.text((center_x - w/2, center_y - h/2 + 150), name, (255,255,255), align='center', font=font)
+    _, _, w, h = draw.textbbox((0, 0), ratio_str, font=font)
+    draw.text((center_x - w/2, center_y - h/2 - 120), ratio_str, (255,255,255), align='center', font=font)
 
 def drawGhosts(img: Image, draw: ImageDraw, pacman_ghost: list):
     # 不包括ghost图片周围的空白部分
-    font = ImageFont.truetype('C:\\Windows\\Fonts\\Deng.ttf', 40)
     ghost_img = Image.open('./ghost.png')
     full_circle_area = math.pi * 400 * 400
     ghost_ratio = 0.711
-    pacman_ghost_sorted = sorted(pacman_ghost, key = lambda item: item['value'], reverse=True)
-    center_x = 700
+    pacman_ghost_sorted = sorted(pacman_ghost, key = lambda item: 0 if item['name'] == '其他' else item['value'], reverse=True)
+    center_x = 650
     for idx, item in enumerate(pacman_ghost_sorted):
         ghost_area = full_circle_area * item['value'] / ghost_ratio
-
         ghost_radius = math.sqrt(ghost_area) / 2
-        center_x += ghost_radius * 1.2
-        appendGhost(img, draw, ghost_img, center_x, 480, ghost_radius, font, item['name'], item["value"], idx)
-        center_x += ghost_radius * 1.2
+        center_x += ghost_radius * 1.25
+        appendGhost(img, draw, ghost_img, center_x, 480, ghost_radius, item['name'], item["value"], idx)
+        center_x += ghost_radius * 1.25
 
 def pacmanGraph(data: dict) -> Image:
     total_num, normalized_data = normalize(data)
