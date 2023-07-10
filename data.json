@@ -1,32 +1,39 @@
 {
-  "title": "2023年5月国产二次元手游流水",
+  "title": "2023年6月国产二次元手游流水",
   "unit": "万元人民币",
   "eye-title": "其他米哈游游戏",
   "pacman-main":[
-    {"name": "原神", "value": 206073 },
-    {"name": "崩坏星穹铁道", "value": 458148 }
+    {"name": "原神", "value": 209385 },
+    {"name": "崩坏星穹铁道", "value": 300510 }
   ],
   "pacman-eye":[
-    {"name": "崩坏3", "value":6836},
-    {"name": "未定事件簿", "value": 2131}
+    {"name": "崩坏3", "value":7392},
+    {"name": "未定事件簿", "value": 3029},
+    {"name": "崩坏学园2", "value": 376}
   ],
   "pacman-ghosts":[
-    {"name": "阴阳师", "value": 14862},
-    {"name": "明日方舟", "value": 44561, "ref": 0.5},
-    {"name": "碧蓝航线", "value": 15719},
-    {"name": "火影忍者\n疾风传", "value": 33084},
-    {"name": "偶像\n梦幻祭2", "value": 11594},
-    {"name": "战双\n帕弥什", "value": 11594},
-    {"name": "幻塔", "value": 3559},
-    {"name": "光与夜\n之恋", "value": 3054},
-    {"name": "奇迹暖暖", "value": 2147},
-    {"name": "闪耀暖暖", "value": 2331},
-    {"name": "无期迷途", "value": 2075},
-    {"name": "雀魂", "value": 5021},
-    {"name": "重返未来\n1999", "value": 2907},
-    {"name": "命运\n冠位指定", "value": 32706},
-    {"name": "碧蓝档案", "value": 11569},
-    {"name": "赛马娘", "value": 27684},
-    {"name": "其他", "value": 28163}
+    {"name": "明日方舟", "value": 13584, "ref": 0.5},
+    {"name": "碧蓝航线", "value": 9683},
+    {"name": "战双\n帕弥什", "value": 2600},
+    {"name": "幻塔", "value": 4860},
+    {"name": "重返未来\n1999", "value": 21552},
+
+    {"name": "阴阳师", "value": 8787},
+    {"name": "深空之眼", "value": 2542},
+    {"name": "奇迹暖暖", "value": 1794},
+    {"name": "闪耀暖暖", "value": 3147},
+    {"name": "恋与\n制作人", "value": 1937},
+    {"name": "无期迷途", "value": 2477},
+    {"name": "白夜极光", "value": 3490},
+    {"name": "雀魂", "value": 1580},
+    {"name": "偶像\n梦幻祭2", "value": 9337},
+    {"name": "代号鸢", "value": 1919},
+    {"name": "光与夜\n之恋", "value": 16305},
+    {"name": "火影忍者\n疾风传", "value": 26625},
+    {"name": "火影忍者\nOL", "value": 2055},
+    {"name": "时空中的\n绘旅人", "value": 1605},
+    {"name": "灌篮高手", "value": 1656},
+
+    {"name": "其他", "value": 7403}
   ]
 }

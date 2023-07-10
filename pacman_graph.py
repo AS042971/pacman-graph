@@ -46,7 +46,7 @@ def drawPacmanMain(draw: ImageDraw, pacman_main: list, pacman_eye: list, eye_tit
         _, _, w, h = draw.textbbox((0, 0), item['name'], font=font)
         # if idx == 0:
         draw.text((font_cx - w/2, font_cy - h/2), item['name'], (0,0,0), align='center', font=font)
-        ratio_str = f'{int(ratio*1000*mul)/10}%'
+        ratio_str = f'{int(math.ceil(ratio*1000*mul))/10}%'
         _, _, w, h = draw.textbbox((0, 0),ratio_str, font=font)
         draw.text((font_cx - w/2, font_cy - h/2 + 40), ratio_str, (0,0,0), align='center', font=font)
         current_angle -= delta_angle
@@ -66,14 +66,14 @@ def drawPacmanMain(draw: ImageDraw, pacman_main: list, pacman_eye: list, eye_tit
     _, _, w, h = draw.textbbox((0, 0), eye_title, font=font)
     # if idx == 0:
     draw.text((550 - w/2, 200 - h/2), eye_title, (0,0,0), align='center', font=font)
-    ratio_str = f'{int(eye_ratio*1000*mul)/10}%'
+    ratio_str = f'{int(math.ceil(eye_ratio*1000*mul))/10}%'
     _, _, w, h = draw.textbbox((0, 0),ratio_str, font=font)
     draw.text((550 - w/2, 200 - h/2 + 40), ratio_str, (0,0,0), align='center', font=font)
 
 def appendGhost(img: Image, draw: ImageDraw, ghost: Image, center_x: float, center_y: float, radius: float, name: str, ratio: float, idx: int, mul: float):
     ghost_resize = ghost.resize((int(radius*2), int(radius*2)))
     img.paste(ghost_resize, (int(center_x - radius), int(center_y - radius)), ghost_resize)
-    ratio_str = f'{int(ratio*1000*mul)/10}%'
+    ratio_str = f'{int(math.ceil(ratio*1000*mul))/10}%'
     font = ImageFont.truetype('C:\\Windows\\Fonts\\Deng.ttf', int(math.sqrt(ratio) * 250))
     _, _, w, h = draw.textbbox((0, 0), name, font=font)
     draw.text((center_x - w/2, center_y - h/2 + 150), name, (255,255,255), align='center', font=font)
@@ -86,7 +86,7 @@ def drawGhosts(img: Image, draw: ImageDraw, pacman_ghost: list, mul: float):
     full_circle_area = math.pi * 400 * 400
     ghost_ratio = 0.711
     pacman_ghost_sorted = sorted(pacman_ghost, key = lambda item: 0 if item['name'] == '其他' else item['value'], reverse=True)
-    center_x = 650
+    center_x = 700
     for idx, item in enumerate(pacman_ghost_sorted):
         ghost_area = full_circle_area * item['value'] / ghost_ratio
         ghost_radius = math.sqrt(ghost_area) / 2
