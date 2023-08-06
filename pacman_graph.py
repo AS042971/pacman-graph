@@ -7,22 +7,36 @@ import argparse
 import math
 from PIL import Image, ImageDraw, ImageFont
 
+def getWrappedText(text: str, font: ImageFont.ImageFont,
+                     line_length: int):
+        lines = ['']
+        for word in text.split():
+            line = f'{lines[-1]} {word}'.strip()
+            if font.getlength(line) <= line_length:
+                lines[-1] = line
+            else:
+                lines.append(word)
+        return '\n'.join(lines)
+
 def normalize(data: dict) -> tuple[float, dict, float]:
     total_num = \
         sum(c['value'] for c in data['pacman-main']) +\
         sum(c['value'] for c in data['pacman-eye']) +\
-        sum(c['value'] for c in data['pacman-ghosts'])
+        sum(c['value'] for c in data['pacman-ghosts']) +\
+        sum(c['value'] for c in data['pacman-others'])
     total_ref = total_num
     normalized_data = data.copy()
-    for key in ['pacman-main', 'pacman-eye', 'pacman-ghosts']:
+    for key in ['pacman-main', 'pacman-eye', 'pacman-ghosts', 'pacman-others']:
         for item in normalized_data[key]:
             if 'ref' in item:
                 total_ref = item['value'] / item['ref']
             item['value'] /= total_num
     mul = total_num / total_ref
+    others_sum = sum(c['value'] for c in normalized_data['pacman-others'])
+    normalized_data['pacman-ghosts'].append({'name': data['others-title'], 'value': others_sum})
     return total_num, normalized_data, mul
 
-def drawPacmanMain(draw: ImageDraw, pacman_main: list, pacman_eye: list, eye_title: str, mul: float):
+def drawPacmanMain(draw: ImageDraw, pacman_main: list, pacman_eye: list, pacman_others: list, eye_title: str, others_title: str, mul: float):
     eye_ratio = sum(c['value'] for c in pacman_eye)
     main_ratio = sum(c['value'] for c in pacman_main) + eye_ratio
     pacman_main_sorted = sorted(pacman_main, key = lambda item: item['value'], reverse=True)
@@ -81,12 +95,20 @@ def drawPacmanMain(draw: ImageDraw, pacman_main: list, pacman_eye: list, eye_tit
     _, _, w, h = draw.textbbox((0, 0),ratio_str, font=font)
     draw.text((550 - w/2-15, 220 - eye_radius - h/2 + 40), ratio_str, (0,0,0), align='center', font=font2)
 
-    eye_str = f'* {eye_title}包括: '
+    eye_str = f'{eye_title}: '
     for idx, item in enumerate(pacman_eye):
         eye_str += f"{item['name']} ({int(math.ceil(item['value']*1000*mul))/10}%)"
         if idx != len(pacman_eye) - 1:
             eye_str += ', '
     draw.text((800, 800), eye_str, (255, 255, 255), align='left', font=font)
+
+    others_str = f'{others_title}: '
+    for idx, item in enumerate(pacman_others):
+        others_str += f"{item['name']} ({int(math.ceil(item['value']*1000*mul))/10}%)"
+        if idx != len(pacman_others) - 1:
+            others_str += ', '
+    others_str_wp = getWrappedText(others_str, font, 1500)
+    draw.text((800, 850), others_str_wp, (255, 255, 255), align='left', font=font)
 
     return main_ratio + eye_ratio
 
@@ -101,12 +123,12 @@ def appendGhost(img: Image, draw: ImageDraw, ghost: Image, center_x: float, cent
     _, _, w, h = draw.textbbox((0, 0), ratio_str, font=font)
     draw.text((center_x - w/2, center_y - h/2 - ghost0_radius * 1.4), ratio_str, (255,255,255), align='center', font=font2)
 
-def drawGhosts(img: Image, draw: ImageDraw, pacman_ghost: list, mul: float, center_x: float):
+def drawGhosts(img: Image, draw: ImageDraw, pacman_ghost: list, mul: float, center_x: float, others_title: str):
     # 不包括ghost图片周围的空白部分
     ghost_img = Image.open('./ghost.png')
     full_circle_area = math.pi * 400 * 400
     ghost_ratio = 0.711
-    pacman_ghost_sorted = sorted(pacman_ghost, key = lambda item: 0 if item['name'] == '其他' else item['value'], reverse=True)
+    pacman_ghost_sorted = sorted(pacman_ghost, key = lambda item: 0 if item['name'] == others_title else item['value'], reverse=True)
     ghost0_area = full_circle_area * pacman_ghost_sorted[0]['value'] / ghost_ratio
     ghost0_radius = math.sqrt(ghost0_area) / 2
     for idx, item in enumerate(pacman_ghost_sorted):
@@ -120,11 +142,11 @@ def pacmanGraph(data: dict) -> Image:
     total_num, normalized_data, mul = normalize(data)
     image = Image.new('RGB', (2800, 1000))
     draw = ImageDraw.Draw(image)
-    main_ratio = drawPacmanMain(draw, normalized_data['pacman-main'], normalized_data['pacman-eye'], normalized_data['eye-title'], mul)
+    main_ratio = drawPacmanMain(draw, normalized_data['pacman-main'], normalized_data['pacman-eye'], normalized_data['pacman-others'], normalized_data['eye-title'], normalized_data['others-title'], mul)
     angle = 2 * math.pi * (1 - main_ratio)
     center_x = 400 * math.cos(angle / 2) + 500
     center_x_2 = 180 / math.tan(angle / 2) + 500
-    drawGhosts(image, draw, normalized_data['pacman-ghosts'], mul, max(min(center_x_2, center_x), 600))
+    drawGhosts(image, draw, normalized_data['pacman-ghosts'], mul, max(min(center_x_2, center_x), 600), normalized_data['others-title'])
     title_str = f"{data['title']} ( 1% = {int(total_num / 100 / mul)} {data['unit']} )"
     font = ImageFont.truetype('C:\\Windows\\Fonts\\simkai.ttf', 75)
     draw.text((800, 150), title_str, (255, 255, 255), align='left', font=font)

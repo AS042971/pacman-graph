@@ -1,10 +1,11 @@
 {
-  "title": "测试用",
-  "unit": "万元人民币",
+  "title": "6月二次元手游全球流水",
+  "unit": "万元",
   "eye-title": "其他米哈游游戏",
+  "others-title": "其他游戏",
   "pacman-main":[
     {"name": "原神", "value": 209385 },
-    {"name": "崩坏星穹铁道", "value": 300510 }
+    {"name": "崩坏:星穹铁道", "value": 300510 }
   ],
   "pacman-eye":[
     {"name": "崩坏3", "value":7392},
@@ -12,26 +13,23 @@
     {"name": "崩坏学园2", "value": 376}
   ],
   "pacman-ghosts":[
-    {"name": "明日方舟", "value": 13584},
-    {"name": "碧蓝航线", "value": 9683},
-    {"name": "战双\n帕弥什", "value": 2600},
-    {"name": "幻塔", "value": 4860},
+    {"name": "命运-\n冠位指定", "value": 32845},
+    {"name": "火影忍者\n疾风传", "value": 26265},
     {"name": "重返未来\n1999", "value": 21552},
-    {"name": "阴阳师", "value": 8787},
-    {"name": "深空之眼", "value": 2542},
-    {"name": "奇迹暖暖", "value": 1794},
-    {"name": "闪耀暖暖", "value": 3147},
-    {"name": "恋与\n制作人", "value": 1937},
-    {"name": "无期迷途", "value": 2477},
-    {"name": "白夜极光", "value": 3490},
-    {"name": "雀魂", "value": 1580},
-    {"name": "偶像\n梦幻祭2", "value": 9337},
-    {"name": "代号鸢", "value": 1919},
+    {"name": "Nikke\n胜利女神", "value": 20987},
     {"name": "光与夜\n之恋", "value": 16305},
-    {"name": "火影忍者\n疾风传", "value": 26625},
-    {"name": "火影忍者\nOL", "value": 2055},
-    {"name": "时空中的\n绘旅人", "value": 1605},
-    {"name": "灌篮高手", "value": 1656},
-    {"name": "其他", "value": 7403}
+    {"name": "明日方舟", "value": 13584},
+    {"name": "第七史诗", "value": 13511},
+    {"name": "碧蓝航线", "value": 9683},
+    {"name": "偶像\n梦幻祭2", "value": 9337},
+    {"name": "阴阳师", "value": 8787}
+  ],
+  "pacman-others": [
+    {"name": "碧蓝档案", "value": 6444},
+    {"name": "绯染天空", "value": 6180},
+    {"name": "幻塔", "value": 4859},
+    {"name": "Memento-Mori", "value": 4596},
+    {"name": "白夜极光", "value": 3490},
+    {"name": "闪耀暖暖", "value": 3147}
   ]
 }
