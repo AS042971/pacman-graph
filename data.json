@@ -1,5 +1,5 @@
 {
-  "title": "2023年6月国产二次元手游流水",
+  "title": "测试用",
   "unit": "万元人民币",
   "eye-title": "其他米哈游游戏",
   "pacman-main":[
@@ -12,12 +12,11 @@
     {"name": "崩坏学园2", "value": 376}
   ],
   "pacman-ghosts":[
-    {"name": "明日方舟", "value": 13584, "ref": 0.5},
+    {"name": "明日方舟", "value": 13584},
     {"name": "碧蓝航线", "value": 9683},
     {"name": "战双\n帕弥什", "value": 2600},
     {"name": "幻塔", "value": 4860},
     {"name": "重返未来\n1999", "value": 21552},
-
     {"name": "阴阳师", "value": 8787},
     {"name": "深空之眼", "value": 2542},
     {"name": "奇迹暖暖", "value": 1794},
@@ -33,7 +32,6 @@
     {"name": "火影忍者\nOL", "value": 2055},
     {"name": "时空中的\n绘旅人", "value": 1605},
     {"name": "灌篮高手", "value": 1656},
-
     {"name": "其他", "value": 7403}
   ]
 }
