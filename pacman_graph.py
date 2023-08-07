@@ -100,7 +100,7 @@ def drawPacmanMain(draw: ImageDraw, pacman_main: list, pacman_eye: list, pacman_
         eye_str += f"{item['name']} ({int(math.ceil(item['value']*1000*mul))/10}%)"
         if idx != len(pacman_eye) - 1:
             eye_str += ', '
-    draw.text((800, 800), eye_str, (255, 255, 255), align='left', font=font)
+    draw.text((800, 800), eye_str, (128, 128, 128), align='left', font=font)
 
     others_str = f'{others_title}: '
     for idx, item in enumerate(pacman_others):
@@ -108,7 +108,7 @@ def drawPacmanMain(draw: ImageDraw, pacman_main: list, pacman_eye: list, pacman_
         if idx != len(pacman_others) - 1:
             others_str += ', '
     others_str_wp = getWrappedText(others_str, font, 1500)
-    draw.text((800, 850), others_str_wp, (255, 255, 255), align='left', font=font)
+    draw.text((800, 850), others_str_wp, (128, 128, 128), align='left', font=font)
 
     return main_ratio + eye_ratio
 
@@ -147,7 +147,7 @@ def pacmanGraph(data: dict) -> Image:
     center_x = 400 * math.cos(angle / 2) + 500
     center_x_2 = 180 / math.tan(angle / 2) + 500
     drawGhosts(image, draw, normalized_data['pacman-ghosts'], mul, max(min(center_x_2, center_x), 600), normalized_data['others-title'])
-    title_str = f"{data['title']} ( 1% = {int(total_num / 100 / mul)} {data['unit']} )"
+    title_str = f"{data['title']} (1% = {int(total_num / 100 / mul)}{data['unit']})"
     font = ImageFont.truetype('C:\\Windows\\Fonts\\simkai.ttf', 75)
     draw.text((800, 150), title_str, (255, 255, 255), align='left', font=font)
     return image
