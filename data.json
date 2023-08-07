@@ -1,35 +1,74 @@
 {
-  "title": "6月二次元手游全球流水",
-  "unit": "万元",
+  "title": "2023上半年二次元手游全球流水",
+  "unit": "亿元",
   "eye-title": "其他米哈游游戏",
   "others-title": "其他游戏",
-  "pacman-main":[
-    {"name": "原神", "value": 209385 },
-    {"name": "崩坏:星穹铁道", "value": 300510 }
+  "pacman-main": [
+    {
+      "name": "原神",
+      "value": 186.708
+    },
+    {
+      "name": "崩坏星穹铁道",
+      "value": 90.2328
+    }
   ],
-  "pacman-eye":[
-    {"name": "崩坏3", "value":7392},
-    {"name": "未定事件簿", "value": 3029},
-    {"name": "崩坏学园2", "value": 376}
+  "pacman-eye": [
+    {
+      "name": "崩坏3",
+      "value": 6.4032
+    }
   ],
-  "pacman-ghosts":[
-    {"name": "命运-\n冠位指定", "value": 32845},
-    {"name": "火影忍者\n疾风传", "value": 26265},
-    {"name": "重返未来\n1999", "value": 21552},
-    {"name": "Nikke\n胜利女神", "value": 20987},
-    {"name": "光与夜\n之恋", "value": 16305},
-    {"name": "明日方舟", "value": 13584},
-    {"name": "第七史诗", "value": 13511},
-    {"name": "碧蓝航线", "value": 9683},
-    {"name": "偶像\n梦幻祭2", "value": 9337},
-    {"name": "阴阳师", "value": 8787}
+  "pacman-ghosts": [
+    {
+      "name": "赛马娘",
+      "value": 23.5983
+    },
+    {
+      "name": "命运-\n冠位指定",
+      "value": 21.7704
+    },
+    {
+      "name": "Nikke\n胜利女神",
+      "value": 17.2584
+    },
+    {
+      "name": "火影忍者\n疾风传",
+      "value": 16.1673
+    },
+    {
+      "name": "明日方舟",
+      "value": 14.9919
+    },
+    {
+      "name": "碧蓝档案",
+      "value": 8.1446
+    },
+    {
+      "name": "偶像\n梦幻祭2",
+      "value": 7.3716
+    }
   ],
   "pacman-others": [
-    {"name": "碧蓝档案", "value": 6444},
-    {"name": "绯染天空", "value": 6180},
-    {"name": "幻塔", "value": 4859},
-    {"name": "Memento-Mori", "value": 4596},
-    {"name": "白夜极光", "value": 3490},
-    {"name": "闪耀暖暖", "value": 3147}
+    {
+      "name": "阴阳师",
+      "value": 7.2625
+    },
+    {
+      "name": "绯染天空",
+      "value": 6.9988
+    },
+    {
+      "name": "光与夜\n之恋",
+      "value": 5.9667
+    },
+    {
+      "name": "碧蓝航线",
+      "value": 5.6206
+    },
+    {
+      "name": "幻塔",
+      "value": 5.032
+    }
   ]
 }

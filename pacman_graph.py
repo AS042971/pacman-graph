@@ -104,7 +104,7 @@ def drawPacmanMain(draw: ImageDraw, pacman_main: list, pacman_eye: list, pacman_
 
     others_str = f'{others_title}: '
     for idx, item in enumerate(pacman_others):
-        others_str += f"{item['name']} ({int(math.ceil(item['value']*1000*mul))/10}%)"
+        others_str += f"{item['name'].replace('/n','')} ({int(math.ceil(item['value']*1000*mul))/10}%)"
         if idx != len(pacman_others) - 1:
             others_str += ', '
     others_str_wp = getWrappedText(others_str, font, 1500)
